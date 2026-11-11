@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: dd4409c546480a9488599d4be6317f82
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: a8639d97f4dac7b4fa3a95c0b05bb159
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 87e044d63b1c69248a0ec41d0f5a400b
+  - enabled: 1
+    path: Assets/Scenes/Entrenar.unity
+    guid: a0eee96e9fef5984d9773b336e214590
+  - enabled: 1
+    path: Assets/Scenes/Simulador.unity
+    guid: ed728524ea81e92448b933fd70e9fa3f
+  - enabled: 1
+    path: Assets/Scenes/Archivos.unity
+    guid: 454319f8fcf95de42a5c4c14ebd3fc91
+  - enabled: 1
+    path: Assets/Scenes/Logros.unity
+    guid: 7380d58a2b82f5d4980caa3a5bc929a5
+  - enabled: 1
+    path: Assets/Scenes/Ajustes.unity
+    guid: d58a30debbcb8be46915044891c938b9
+  - enabled: 1
+    path: Assets/Scenes/Desafio_01.unity
+    guid: ffd9106d81e477347ba2f59757d895a6
+  - enabled: 1
+    path: Assets/taller-02/Enteros.unity
+    guid: ce70b7fe607db8b449ac81e58383991b
+  - enabled: 1
+    path: Assets/taller-04/Cuestionario.unity
+    guid: f15853fcaf446044bbb45973c86d2f39
+  - enabled: 1
+    path: Assets/Scenes/Desafio_02.unity
+    guid: 6f2898d2ca5e6624aba98717ea11d854
+  - enabled: 1
+    path: Assets/taller-01/Primos_01.unity
+    guid: 080b31dee50da8946bcf1f49bd5310fa
+  - enabled: 1
+    path: Assets/Laboratorios/Laboratorio_01.unity
+    guid: 9bf7fb4980b227542b83f94f8174f2a2
+  - enabled: 1
+    path: Assets/Scenes/Desafio_03.unity
+    guid: 2c87a3cdf494ed241ab5930c282f9b63
+  - enabled: 1
+    path: Assets/taller-03/Ecuaciones.unity
+    guid: df6b56db223ae084c85272796db7ec9d
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9969abc439b50254798ac3e4e24ccf99
+  - enabled: 1
+    path: Assets/PrincipalScene.unity
+    guid: 06f72b01ffa32574189407c28875a7c5
+  - enabled: 1
+    path: Assets/Scenes/Simulador_ra.unity
+    guid: b70c148a1d37d8846b0ede15a3d58fa1
+  - enabled: 1
+    path: Assets/Scenes/Desafio_04.unity
+    guid: 7356b2abfcc359442bde39a186efc6f5
+  - enabled: 1
+    path: Assets/Scenes/Recuperar.unity
+    guid: afa1dddd32e56a040abd32022b07b914
+  - enabled: 1
+    path: Assets/Scenes/Registro.unity
+    guid: 997df176d0645a24292d4c9df4067ff1
+  - enabled: 1
+    path: Assets/Scenes/Login_clave.unity
+    guid: b9eeb012ec48b0b48b293f4393fcf0d0

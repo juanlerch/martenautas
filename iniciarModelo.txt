@@ -1,0 +1,1 @@
+{"taller01NumeroPrimo":[{"numero":4,"esPrimo":false,"validos":[1,2,4],"invalidos":[3,6]},{"numero":6,"esPrimo":false,"validos":[1,2,3,6],"invalidos":[5,8]},{"numero":7,"esPrimo":true,"validos":[1,7],"invalidos":[5,8]}]}

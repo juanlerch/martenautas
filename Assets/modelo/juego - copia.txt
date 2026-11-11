@@ -1,0 +1,70 @@
+{
+    "jugador": {
+        "puntos": 0,
+        "medallas": []
+    },
+    "taller01NumeroPrimoNivel1": {
+        "puntajeMaximo": 100,
+        "puntajeJugador": 0,
+        "puntajeJuego": 0,
+        "data": [
+            {
+                "numero": 4,
+                "esPrimo": false,
+                "validos": [
+                    1,
+                    2,
+                    4
+                ],
+                "invalidos": [
+                    3,
+                    6
+                ],
+                "puntoOK": 10,
+                "puntoERR": -3
+            },
+            {
+                "numero": 6,
+                "esPrimo": false,
+                "validos": [
+                    1,
+                    2,
+                    3,
+                    6
+                ],
+                "invalidos": [
+                    5,
+                    8
+                ],
+                "puntoOK": 10,
+                "puntoERR": -3
+            },
+            {
+                "numero": 7,
+                "esPrimo": true,
+                "validos": [
+                    1,
+                    7
+                ],
+                "invalidos": [
+                    5,
+                    8
+                ],
+                "puntoOK": 10,
+                "puntoERR": -3
+            }
+        ]
+    },
+    "taller01NumeroPrimoNivel2": {
+        "puntajeMaximo": 100,
+        "puntajeJugador": 0,
+        "puntajeJuego": 0,
+        "data": []
+    },
+    "taller01NumeroPrimoNivel3": {
+        "puntajeMaximo": 100,
+        "puntajeJugador": 0,
+        "puntajeJuego": 0,
+        "data": []
+    }
+}
