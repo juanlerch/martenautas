@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LabsMostrarOcultarPorSegundos: MonoBehaviour
 {
+	public static bool inmediato = false;
     public float seconds = 0.0f;
 
     public GameObject[] mostrar;
@@ -18,8 +19,20 @@ public class LabsMostrarOcultarPorSegundos: MonoBehaviour
     }
 
     void Start () {
-        StartCoroutine(esperar());
+		if (inmediato) {
+			mostrarOcultar ();
+			inmediato = false;		
+		}
+		else StartCoroutine(esperar());
     }
+
+	void OnEnable() {
+		if (inmediato) {
+			mostrarOcultar ();
+			inmediato = false;		
+		}
+		else StartCoroutine(esperar()); 
+	}
 
     
 

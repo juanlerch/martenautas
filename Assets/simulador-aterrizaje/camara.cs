@@ -5,29 +5,31 @@ using UnityEngine;
 public class camara : MonoBehaviour {
 	public GameObject nave;
 	Vector3 posicion;
-	// Use this for initialization
+
 	void Start () {
 		posicion = new Vector3 (0, 10f, -7f);
-		Camera.main.orthographicSize  = 10f;
-
+		Camera.main.orthographicSize  = 15f;
+		GetComponent<Camera> ().clearFlags = CameraClearFlags.Skybox;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (nave.GetComponent<Transform> ().position.y > 10) {
-			posicion.y = 10f;
-		} else {
-			if (posicion.y <= 1f) {
-			
-			} else {
-		//		posicion.y = nave.GetComponent<Transform> ().position.y;
-				posicion.y = nave.GetComponent<Transform> ().position.y;
-				Camera.main.orthographicSize  = posicion.y;
-			}
-
-
+	void LateUpdate () 
+	{
+		/*if (nave.transform.position.y < 20) {
+			transform.position = new Vector3(nave.transform.position.x, nave.transform.position.y, -7.0f);
+			Camera.main.orthographicSize  = nave.transform.position.y+3.0f;
 		}
+		else{
+			transform.position = new Vector3(nave.transform.position.x, 20, -7.0f);
+			if (nave.transform.position.y < 12) {
+				Camera.main.orthographicSize  = nave.transform.position.y + 3;
 
-		transform.position = posicion;
+			}
+		}*/
+		transform.position = new Vector3(nave.transform.position.x, nave.transform.position.y, -7.0f);
+		Camera.main.orthographicSize  = nave.transform.position.y+3.0f;
+	//	transform.position = new Vector3(nave.transform.position.x, 20, -7.0f);
 	}
+
+
+
 }

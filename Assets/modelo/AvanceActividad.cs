@@ -9,6 +9,24 @@ public class AvanceActividad  {
 
     public List<int> puntajesMaximo = new List<int>();
 
+	public List<AvanceEstadistica> estadisticas = new List<AvanceEstadistica>();
+
+	 
+
+	public AvanceEstadistica estadistica(int nivel) {
+		if(estadisticas==null) estadisticas = new List<AvanceEstadistica>();
+		if (nivel > estadisticas.Count)
+		{
+			int dif = (nivel - estadisticas .Count );
+			for (int t = 0; t < dif; t++) { 
+				estadisticas.Add(new AvanceEstadistica());
+			}
+		}
+		return  estadisticas [nivel-1];
+	}
+
+
+
     public void actualizar(int nivel, int puntaje,int puntajeMaximo) {
         if (nivel > puntajes.Count)
         {
@@ -18,12 +36,14 @@ public class AvanceActividad  {
                 puntajesMaximo.Add(0);
             }
         }
-            puntajes[nivel-1] = puntaje;
-            puntajesMaximo[nivel - 1] = puntajeMaximo;
+
+		if(puntaje> puntajes[nivel-1])  puntajes[nivel-1] = puntaje;
+		if(puntajeMaximo> puntajesMaximo[nivel-1])  puntajesMaximo[nivel - 1] = puntajeMaximo;
+
     }
 
     public int puntaje(int nivel) {
-		if (nivel > puntajes.Count) {
+		if (nivel > puntajes.Count || nivel == 0) {
 			return 0;
 		} else {
 			return puntajes [nivel - 1];

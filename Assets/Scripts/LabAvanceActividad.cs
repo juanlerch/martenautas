@@ -8,7 +8,8 @@ public class LabAvanceActividad : MonoBehaviour {
     public int nivel;
 	// Use this for initialization
 	void Start () {
-
+		//if (nivel == 0) nivel = 1;
+		if(Principal.avance==null) Principal.inicializar();
         int estado = Principal.avance.avanceJugadorActual().estadoActividad(actividad, nivel) ;
 
         if (estado== 0)

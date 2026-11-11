@@ -9,9 +9,18 @@ public class LabTaller03Terminos : MonoBehaviour, IBeginDragHandler, IDragHandle
     Vector3 startPosition;
     Vector3 posicionInicial;
 
-    GameObject izquierda;
-    GameObject derecha;
-    
+	Vector3 auxPosition;
+
+	//Límites en los que se puede mover el término
+	GameObject limiteInferior;
+	GameObject limiteSuperior;
+
+	//Límites donde se puede arrastrar un término para resolver la ecuación
+	GameObject izquierdaInferior;
+	GameObject izquierdaSuperior;
+	GameObject derechaInferior;
+	GameObject derechaSuperior;
+
 	GameObject contador;
     GameObject txtSolucion;
     GameObject textSolucion;
@@ -22,20 +31,46 @@ public class LabTaller03Terminos : MonoBehaviour, IBeginDragHandler, IDragHandle
     {
 		ubicacionTermino = "A";
 		posicionInicial = GetComponent<RectTransform>().localPosition;
+
+		//Límites
+		limiteInferior = GameObject.Find("limite-inferior");
+		limiteSuperior = GameObject.Find("limite-superior");
+
     } 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+		
         startPosition = transform.position - Input.mousePosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition + startPosition;
+		transform.position = Input.mousePosition + startPosition;
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+		// Verifico que no se salga de lo márgenes
+		auxPosition = transform.position;
+
+		if (transform.position.x < limiteInferior.transform.position.x) {
+			auxPosition.x = limiteInferior.transform.position.x;
+		} else if (transform.position.x > limiteSuperior.transform.position.x) {
+			auxPosition.x = limiteSuperior.transform.position.x;
+		}
+
+		if (transform.position.y < limiteInferior.transform.position.y) {
+			auxPosition.y = limiteInferior.transform.position.y;
+		} else if (transform.position.y > limiteSuperior.transform.position.y) {
+			auxPosition.y = limiteSuperior.transform.position.y;
+		}
+
+
+		transform.position = auxPosition;
+		//------------------------------------------
+
         float distanciaIzquierda;
 		float distanciaDerecha;
 
@@ -51,22 +86,17 @@ public class LabTaller03Terminos : MonoBehaviour, IBeginDragHandler, IDragHandle
 
         txtLetraNro = GetComponent<Text>().text;
 
-		izquierda = GameObject.Find("Panel-Izquierda");
-		derecha   = GameObject.Find("Panel-Derecha");
-
-		float altoPanelIzq = izquierda.GetComponent<RectTransform> ().rect.height;
-		float anchoPanelIzq = izquierda.GetComponent<RectTransform> ().rect.width;
-		float distanciaHorizontalIzquierda = (new Vector2 (izquierda.transform.position.x, 0f) - new Vector2 (transform.position.x, 0f)).magnitude;
-		float distanciaVerticalIzquierda = (new Vector2 (0f, izquierda.transform.position.y) - new Vector2 (0f, transform.position.y)).magnitude;
-
-		float altoPanelDer = derecha.GetComponent<RectTransform> ().rect.height;
-		float anchoPanelDer = derecha.GetComponent<RectTransform> ().rect.width;
-		float distanciaHorizontalDerecha = (new Vector2 (derecha.transform.position.x, 0f) - new Vector2 (transform.position.x, 0f)).magnitude;
-		float distanciaVerticalDerecha = (new Vector2 (0f, derecha.transform.position.y) - new Vector2 (0f, transform.position.y)).magnitude;
+		izquierdaInferior = GameObject.Find("izquierda-inferior");
+		izquierdaSuperior = GameObject.Find("izquierda-superior");
+		derechaInferior   = GameObject.Find("derecha-inferior");
+		derechaSuperior   = GameObject.Find("derecha-superior");
 
 		valor = transform.GetComponent<Text> ().text;
 
-		if ((distanciaHorizontalIzquierda <= (anchoPanelIzq / 2)+(transform.GetComponent<RectTransform>().rect.width/2)) && (distanciaVerticalIzquierda <= (altoPanelIzq / 2)+(transform.GetComponent<RectTransform>().rect.height/2))) {
+		if ((transform.position.x >= izquierdaInferior.transform.position.x)
+		    && (transform.position.x <= izquierdaSuperior.transform.position.x)
+		    && (transform.position.y >= izquierdaInferior.transform.position.y)
+		    && (transform.position.y <= izquierdaSuperior.transform.position.y)) {
 			if (ubicacionTermino != "I") {
 				if (ubicacionTermino == "D") {
 					GameObject.Find ("Scripts").GetComponent<LabTaller03> ().resolucionDerecha.Remove (this.gameObject);
@@ -76,9 +106,11 @@ public class LabTaller03Terminos : MonoBehaviour, IBeginDragHandler, IDragHandle
 			}
 
 			GameObject.Find ("bt_click").GetComponent<AudioSource> ().Play ();
+		} else if ((transform.position.x >= derechaInferior.transform.position.x)
+		         && (transform.position.x <= derechaSuperior.transform.position.x)
+		         && (transform.position.y >= derechaInferior.transform.position.y)
+		         && (transform.position.y <= derechaSuperior.transform.position.y)) {
 
-		} else if ((distanciaHorizontalDerecha <= (anchoPanelDer / 2)+(transform.GetComponent<RectTransform>().rect.width/2)) && (distanciaVerticalDerecha <= (altoPanelDer / 2)+(transform.GetComponent<RectTransform>().rect.height/2))) {
-			
 			if (ubicacionTermino != "D") {
 				if (ubicacionTermino == "I") {
 					GameObject.Find ("Scripts").GetComponent<LabTaller03> ().resolucionIzquierda.Remove (this.gameObject);
@@ -88,7 +120,6 @@ public class LabTaller03Terminos : MonoBehaviour, IBeginDragHandler, IDragHandle
 			}
 
 			GameObject.Find ("bt_click").GetComponent<AudioSource> ().Play ();
-
 		} else {
 			if (ubicacionTermino == "I") {
 				GameObject.Find ("Scripts").GetComponent<LabTaller03> ().resolucionIzquierda.Remove (this.gameObject);

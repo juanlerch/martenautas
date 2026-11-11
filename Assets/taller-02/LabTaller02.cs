@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 
 public class LabTaller02 : MonoBehaviour {
-    public static int nivel = 1;
+    public static int nivel = 2;
 	public GameObject gJuego;
 	public GameObject gMenu;
 	public GameObject gCompleto;
-    public GameObject gNivel;
-    public GameObject gOperacion;
-
+    public GameObject gNivelMenu;
+	public GameObject gNivelJuego;
+	public GameObject gOperacion;
+	public GameObject gPuntajeMenu;
 	public GameObject gOpciones;
 
 	public GameObject sampleOptions;
@@ -27,7 +28,7 @@ public class LabTaller02 : MonoBehaviour {
 
 	private List<GameObject> validar = new List<GameObject> ();
 	private Hashtable valorEsperado  = new Hashtable();
-
+	private string ultimoError;
 
 	public static int index=0;
     bool isDale = false;
@@ -45,13 +46,26 @@ public class LabTaller02 : MonoBehaviour {
         jugar();
     }
 
+	IEnumerator esperarYTerminar()/*   StartCoroutine(esperarYJugar());*/
+	{
+
+		yield return new WaitForSeconds(2);
+		LabsPanelCompleta completa= gCompleto.GetComponent<LabsPanelCompleta> ();
+		completa.completar (Principal.nombreActOperacionesEnteros,nivel,
+							Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeJuego,
+							Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo);
+	}
+
+
     public void iniciar(){
         gCompleto.SetActive(false);
         gMenu.SetActive (false);
 		gJuego.SetActive (true);
-        Debug.Log("nivel:" + nivel);
+      
         Principal.juego.taller02NumerosNaturales[nivel -1].puntajeJuego = 0;
+		gPuntos.GetComponent<Text>().text="0"; 
         index = 0;
+		Principal.avance.avanceJugadorActual ().estadistica (Principal.nombreActOperacionesEnteros, nivel).Inicializar ();
 		jugar ();
 	}
 	public void jugar(){
@@ -140,16 +154,19 @@ public class LabTaller02 : MonoBehaviour {
 		sampleOptions.SetActive (false);
 	}
 
-    public void dale1()
+ /*   public void dale1()
     {
         bool esCorrecta = true;
-
+		ultimoError = "";
         foreach (GameObject go in validar)
         {
             bool ve = (bool)valorEsperado[go];
             bool va = go.GetComponent<Toggle>().isOn;
-            if (ve != va)
-                esCorrecta = false;
+			if (ve != va) {
+				esCorrecta = false;
+				ultimoError += go.GetComponentInChildren<Text> ().text + " - ";
+
+			}
         }
         if (esCorrecta)
         {
@@ -159,31 +176,41 @@ public class LabTaller02 : MonoBehaviour {
         else {
             dale1();
         }
-    }
+    }*/
     public void dale(){
+		if (!Principal.isInteractable)
+			return;
         bool esCorrecta = true;
 
-        foreach (GameObject go in validar)
+		foreach (GameObject go in validar)
         {
             bool ve = (bool)valorEsperado[go];
             bool va = go.GetComponent<Toggle>().isOn;
-            if (ve != va)
-                esCorrecta = false;
+			if (ve != va) {
+				esCorrecta = false;
+			}
         }
 
+		ultimoError = "_";
+		foreach(GameObject go in opciones){
+			bool va = go.GetComponent<Toggle>().isOn;
+			if (va) {
+				ultimoError += go.GetComponentInChildren<Text> ().text + " ; ";
+			}
+		}
+
         /*si es correcta pasa al siguiente*/
-        if (esCorrecta) {
+		if (esCorrecta) {
+			Principal.avance.avanceJugadorActual ().estadistica ( Principal.nombreActOperacionesEnteros,   nivel).actualizarOK ();
             Principal.juego.taller02NumerosNaturales[nivel-1].puntajeJuego += Principal.juego.taller02NumerosNaturales[nivel - 1].data[index].puntoOK;
 
             if (index < (Principal.juego.taller02NumerosNaturales[nivel - 1].data.Length-1)) {
 				index++;		
 			} else {
 				index = 0;
-				LabsPanelCompleta completa= gCompleto.GetComponent<LabsPanelCompleta> ();
-                
-				completa.completar (Principal.nombreActOperacionesEnteros,nivel,
-                                    Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeJuego,
-				                    Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo);
+
+				StartCoroutine(esperarYTerminar()); //jugar ();
+
 
             }
 
@@ -193,6 +220,8 @@ public class LabTaller02 : MonoBehaviour {
 		} 
 		/*si no es correcta resta el puntaje y queda en el actual*/
 		else {
+			Principal.avance.avanceJugadorActual ().estadistica (Principal.nombreActOperacionesEnteros , nivel).actualizarERR("Index: " + index +" Numero:"+ gOperacion.GetComponent<Text> ().text + " respuesta: " + ultimoError );
+
 			Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeJuego  += Principal.juego.taller02NumerosNaturales[nivel - 1].data [index].puntoERR;
             if (Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeJuego < 0) {
                 Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeJuego = 0;
@@ -209,18 +238,25 @@ public class LabTaller02 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Transform tpuntos = gMenu.transform.Find("MIDDLE Area/Contenedor MENU/Panel/Puntos");
-        GameObject puntos = tpuntos.gameObject;
-        Text text = puntos.GetComponent<Text>();
-        text.text = "" + Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo;
-        gNivel.GetComponent<Text>().text = "" + nivel;
-    }
+		Principal.inicializar ();
+        //Transform tpuntos = gMenu.transform.Find("MIDDLE Area/Contenedor MENU/Panel/Puntos");
+        //GameObject puntos = tpuntos.gameObject;
+        //Text text = puntos.GetComponent<Text>();
+        //text.text = "" + Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo;
+		Debug.Log("nivel:" + nivel + "puntaje:" + Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo);
+		Principal.nivelActual = nivel;
+		gPuntajeMenu.GetComponent<Text>().text="" + Principal.juego.taller02NumerosNaturales[nivel - 1].puntajeMaximo;
+		gNivelMenu.GetComponent<Text>().text = "" + nivel;
+		gNivelJuego.GetComponent<Text>().text = "" + nivel;
+		gameObject.GetComponent<LabsInfoXNivel> ().setNivel (nivel);
+
+	}
 
     public void continuar() {
         Principal p = new Principal();
         if (nivel == 1) p.cargarEscena("desafio_01");
-        if (nivel == 2) p.cargarEscena("desafio_03");
-        if (nivel == 3) p.cargarEscena("desafio_04");
+        if (nivel == 2) p.cargarEscena("desafio_04");
+        if (nivel == 3) p.cargarEscena("desafio_07");
 
     }
 
@@ -230,7 +266,7 @@ public class LabTaller02 : MonoBehaviour {
             if (daleTimeout < 0.0)
             {
                 isDale = false;
-                dale1();
+             //   dale1();
             }
             else {
                 daleTimeout = daleTimeout - Time.deltaTime;

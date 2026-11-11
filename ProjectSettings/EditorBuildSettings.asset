@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Archivos.unity
     guid: 454319f8fcf95de42a5c4c14ebd3fc91
   - enabled: 1
-    path: Assets/Scenes/Logros.unity
-    guid: 7380d58a2b82f5d4980caa3a5bc929a5
-  - enabled: 1
     path: Assets/Scenes/Ajustes.unity
     guid: d58a30debbcb8be46915044891c938b9
   - enabled: 1
@@ -42,23 +39,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Desafio_02.unity
     guid: 6f2898d2ca5e6624aba98717ea11d854
   - enabled: 1
-    path: Assets/taller-01/Primos_01.unity
+    path: Assets/taller-01/Primos.unity
     guid: 080b31dee50da8946bcf1f49bd5310fa
-  - enabled: 1
-    path: Assets/Laboratorios/Laboratorio_01.unity
-    guid: 9bf7fb4980b227542b83f94f8174f2a2
   - enabled: 1
     path: Assets/Scenes/Desafio_03.unity
     guid: 2c87a3cdf494ed241ab5930c282f9b63
   - enabled: 1
     path: Assets/taller-03/Ecuaciones.unity
     guid: df6b56db223ae084c85272796db7ec9d
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 9969abc439b50254798ac3e4e24ccf99
-  - enabled: 1
-    path: Assets/PrincipalScene.unity
-    guid: 06f72b01ffa32574189407c28875a7c5
   - enabled: 1
     path: Assets/Scenes/Simulador_ra.unity
     guid: b70c148a1d37d8846b0ede15a3d58fa1
@@ -74,3 +62,69 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Login_clave.unity
     guid: b9eeb012ec48b0b48b293f4393fcf0d0
+  - enabled: 1
+    path: Assets/Scenes/Logros.unity
+    guid: b8c977abb230c134cbcb484af5ffe55b
+  - enabled: 1
+    path: Assets/Laboratorio-01/Laboratorio_01.unity
+    guid: 9bf7fb4980b227542b83f94f8174f2a2
+  - enabled: 1
+    path: Assets/Scenes/Desafio_08.unity
+    guid: e9ce523bb740c1d4998ebe22ed6d7954
+  - enabled: 1
+    path: Assets/Scenes/Desafio_07.unity
+    guid: 6c4e36b705b6ad24d8e327cad1b94978
+  - enabled: 1
+    path: Assets/Scenes/Desafio_06.unity
+    guid: b35801d1f8086904199134ffda58b398
+  - enabled: 1
+    path: Assets/Scenes/Desafio_05.unity
+    guid: 4051c650cd503ec40b2cf5e7b296e491
+  - enabled: 1
+    path: Assets/Scenes/Desafio_09.unity
+    guid: b076d2fd8c55a9041a06adf07119e1ea
+  - enabled: 1
+    path: Assets/Laboratorio-02/Laboratorio_02.unity
+    guid: f8c5286744958154c9e756f48d8641dc
+  - enabled: 1
+    path: Assets/Scenes/Msj_InsigniaNivel.unity
+    guid: f9e09a3f72d6890468063b572df74286
+  - enabled: 0
+    path: Assets/FlightKit/FlightKit/Scenes/Gameplay1.unity
+    guid: abb04098aeebd4101bd15d38d77c21dc
+  - enabled: 0
+    path: Assets/FlightKit/FlightKit/Scenes/Gameplay2.unity
+    guid: a99e7f8bac5ea48f9952e5356860e248
+  - enabled: 1
+    path: Assets/simulador-vuelo/simuladorVuelo.unity
+    guid: 2482a629665f32c47a637224553e3cf4
+  - enabled: 0
+    path: Assets/simulador-aterrizaje/aterrizaje.unity
+    guid: e03a15ff3bdde9e4e883f5f133f2902b
+  - enabled: 1
+    path: Assets/simulador-rover/rover.unity
+    guid: 67be8f8255653e94fbe118a6cc3e7587
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 9301b3dcbf7cfcc4abcd444851542e40
+  - enabled: 1
+    path: Assets/simulador-vuelo/simuladorVuelo02.unity
+    guid: b92d5d90f4fdc854382185e4aba731dd
+  - enabled: 1
+    path: Assets/Scenes/AjustesAditiva.unity
+    guid: a558bed7bea1e5949a3390f39e739440
+  - enabled: 1
+    path: Assets/Scenes/Simulador_ra_actividad.unity
+    guid: cde45b4f49fe128448c15c51546bc4d4
+  - enabled: 1
+    path: Assets/simulador-aterrizaje/aterrizaje01.unity
+    guid: e5f1952e69e837a4e9f0457709b48529
+  - enabled: 1
+    path: Assets/simulador-aterrizaje/aterrizaje02.unity
+    guid: eb8e19e9a2fb3e74da90bec6f3b5061e
+  - enabled: 1
+    path: Assets/Scenes/RegistroAditivo.unity
+    guid: 141650fdb0c24024c9a219945631300e
+  - enabled: 1
+    path: Assets/simulador-rover/rover02.unity
+    guid: df81f29a5ed649d49b8dccc74a610136

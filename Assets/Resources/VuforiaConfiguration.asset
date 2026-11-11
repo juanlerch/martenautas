@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: AVOpfxz/////AAABmbCpDBox3EwZmVoT+uxExXsW2mgM6Z1wkfnRnvrE1CTWm9SQSn6cWtMI22ghu+F4Hi93Ab8zweJ9LuNsKm8CMO1gcteFMjYTi4Nd8s96prKgcWugD5jDJNLf0uQYUvfTavSTpKKJ2t+sgnsxVryeFqASKOk0UOGN1/rUk9kIRzqiBROAZ7Rx3+DoT+H7dcUjl5b8rzGXgGEXWA88rgkeYW1Pgzuoc2UCddoF7/awBLjdEylBLVZMFGITTAFnbe+6lCwFenJgOqusKN1mGP2Ib+ZMX5VA2T2PWqetbPk5rdzUoFkXRRZiWIGIt1xkWXZxjUhy34NEUAWUxnne0z8iefUuKT3e2Ycd1FM740Lf4CoC
+    vuforiaLicenseKey: AbRwMQn/////AAAACKM2UD605ElxiCO6Bq2lEUMC0lgfivGxfKwRxUhZ5FBn1FWjfX7O3H6eM8MpSb/UgAFS6eR5bQ63yHuxPItHIX8vABMb0In3msxNKvTPUVKKZ+u2s+ezQ5KHOs2AupOwjNpfY6h/WJtietN5s6xNWYv5NTUJquvhZp4H1dkUnMTLgtHCYLWwGkpwG3C2u1KS5pnkdvFMvI4IZLmKy5DOfjoRD9sMg1gmMQG1/sUb1gRSHBY+a9lrpmIC8oNf96yj4sG7tYSOCQwZtT8UuDwzx3/s0nLVWFkJ3m4E/9NnwvayqdtkKe8KGL1foYkCD9KsKo3sMCOMaNk8LxJk6nsWzV4eGt0g2g69f7sFGUxYUS1B
     ufoLicenseKey: QWV5L1JMei8vLy8vQUFBQUtEbkxremY0cmtzQXVqaG9udGhFeUlraVVVQWxsbXpTUWRvSGx3VUU1akRHdUJYWk5OSkFkMzVEeDlJRVZUc2JCNWlzNHZEdUdFaEd3cWNqdU5KRTdXYnlCanZnWG5UT3kwbGo4NmhpQWJsRnJkTFlUdDdJV1BlQzRHLy92a1IvTGZiZzhEQndZcUtKY1pTN3FoQ1FFMk10QlMvb2dTRVpzbmEvWTFoQlhKbU40UWxJL2xrUkw3ZFI4VG1qY0NsWUFlVlowRmw0STRmbEZNSmVxdHlkZlh2NVlwYWNWcHdUVno3WmNKMFYvclFkSlVMSFlJMWhEUWtrZExsTkNCWkI4UGRWdzRwT01scnFDazhwM0g5aFh3eENhRjBmWVhOUk1KbldwcUVxbTBTRXBKR0xwV1BBNXd0cnBqV2VQdjkvWVVmWlluWEtOT3NvMzI0QjZvNlpQQWozZmNncGZKUmg2L0d2NEY5Y3RmcHE=
     delayedInitialization: 1
     cameraDeviceModeSetting: -1
@@ -45,12 +45,8 @@ MonoBehaviour:
   databaseLoad:
     dataSetsToLoad:
     - martenautasdb
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
     dataSetsToActivate:
     - martenautasdb
-    - VuforiaMars_Images
-    - VuforiaMars_VuMark
   videoBackground:
     clippingMode: 0
     numDivisions: 2

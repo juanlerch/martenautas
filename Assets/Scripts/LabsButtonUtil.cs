@@ -11,10 +11,13 @@ public class LabsButtonUtil : MonoBehaviour {
 	AudioSource onEnter;
 	AudioSource onClick;
 
+	bool interactable=true;
+
 	// mouseEnter mouseClick
 	// Use this for initialization
 	void Start () {
 		Button btn = GetComponent<Button>();
+		if(btn!=null) interactable = btn.interactable;
 		if (btn != null)
 			btn.onClick.AddListener (TaskOnClick);
 		else {
@@ -60,19 +63,19 @@ public class LabsButtonUtil : MonoBehaviour {
 
 	public void OnPointerEnterDelegate(PointerEventData data)
 	{
-		if(onEnter!=null) onEnter.Play();
+		if(onEnter!=null && interactable) onEnter.Play();
 	}
 
 
 	void TaskOnClick()
 	{
-		if (onClick != null) onClick.Play();
+		if (onClick != null && interactable ) onClick.Play();
 	}
 
 	//Output the new state of the Toggle into Text
 	void ToggleValueChanged(Toggle change)
 	{
-		if (onClick != null) onClick.Play();
+		if (onClick != null && interactable) onClick.Play();
 	}
 
 

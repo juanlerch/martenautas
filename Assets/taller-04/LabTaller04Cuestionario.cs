@@ -40,10 +40,9 @@ public class LabTaller04Cuestionario : MonoBehaviour {
 
 		if (nroPreg == 0) {
 			Principal.juego.taller04Cuestionarios[nivel].puntajeJuego = 0;
+			gPuntos.GetComponent<Text> ().text = "0 XP";
 			nroPregunta = 0;
 		}
-
-		//gPuntos.GetComponent<Text> ().text = "" + Principal.juego.taller04Cuestionarios[nivel].puntajeJuego + " XP";
 
 		GameObject.Find("Tit Tema").GetComponent<Text> ().text = Principal.juego.taller04Cuestionarios[nivel].data.titulo;
 		GameObject.Find("Pregunta").GetComponent<Text> ().text = Principal.juego.taller04Cuestionarios[nivel].data.preguntas[nroPreg].enunciado;
@@ -149,6 +148,7 @@ public class LabTaller04Cuestionario : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Principal.nivelActual = nivel+1;
 		gNivelMenu.GetComponent<Text>().text = "" + (nivel + 1);
 		gNivelJuego.GetComponent<Text>().text = "" + (nivel + 1);
 		gNivelCompleta.GetComponent<Text>().text = "" + (nivel + 1);
@@ -162,7 +162,7 @@ public class LabTaller04Cuestionario : MonoBehaviour {
 
 		gMenu.SetActive (true);
 		gJuego.SetActive (false);
-
+		gameObject.GetComponent<LabsInfoXNivel> ().setNivel (nivel+1);
 	}
 	
 	void Update () {

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class LabsAminateText : MonoBehaviour {
 
-
+	GameObject audioTipeo;
 
 	string strComplete;
 	void Start(){
-
+		audioTipeo = GameObject.Find ("AudioTipeo");
 		strComplete = gameObject.GetComponent<Text> ().text; 
 		//Debug.Log ("1:"+strComplete);
 		gameObject.GetComponent<Text> ().text=""; 
@@ -31,17 +31,30 @@ public class LabsAminateText : MonoBehaviour {
 		int i = 0;
 		string str = "";
 		//Debug.Log ("2:"+strComplete);
+		if (audioTipeo != null) audioTipeo.GetComponent<AudioSource> ().Play ();
 		while( i < strComplete.Length ){
-			//Debug.Log ("3:"+str );
+			if (audioTipeo != null && !audioTipeo.GetComponent<AudioSource>().isPlaying ) 
+				audioTipeo.GetComponent<AudioSource> ().Play ();
 			str += strComplete[i++];
 			gameObject.GetComponent<Text> ().text = str;
 			yield return new WaitForSeconds(0.05F);
+
+		}
+		if (audioTipeo != null) {
+			Debug.Log ("stopping:" + strComplete);
+			audioTipeo.GetComponent<AudioSource> ().Stop ();
+
 		}
 	}
 
     void OnDisable()
     {
         gameObject.GetComponent<Text>().text = strComplete;
+		if (audioTipeo != null) {
+			Debug.Log ("stopping:" + strComplete);
+			audioTipeo.GetComponent<AudioSource> ().Stop ();
+
+		}
     }
 
 

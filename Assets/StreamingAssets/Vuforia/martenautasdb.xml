@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="santafelogo" size="1.000000 0.933333" />
-    <ImageTarget name="pru003" size="1.000000 0.493506" />
+    <ImageTarget name="06_saturno" size="1.000000 1.372308" />
+    <ImageTarget name="05_jupiter" size="1.000000 1.363914" />
+    <ImageTarget name="09_luna" size="652.000000 893.370178" />
+    <ImageTarget name="04_marte" size="1.000000 1.368098" />
+    <ImageTarget name="02_venus" size="1.000000 1.368098" />
+    <ImageTarget name="00_sol" size="1.000000 1.370200" />
+    <ImageTarget name="01_mercurio" size="1.000000 1.368098" />
+    <ImageTarget name="08_neptuno" size="1.000000 1.368098" />
+    <ImageTarget name="07_urano" size="1.000000 1.368098" />
+    <ImageTarget name="03_tierra" size="650.000000 889.263794" />
   </Tracking>
 </QCARConfig>

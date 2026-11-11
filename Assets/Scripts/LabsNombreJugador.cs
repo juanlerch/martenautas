@@ -12,12 +12,16 @@ public class LabsNombreJugador : MonoBehaviour {
         // Use this for initialization
         void Start()
         {
-            Principal p =new Principal();
-            p.cargarModelo();
-
-            Text text = GetComponent<Text>();
-            text.text = "" + Principal.user;
         }
 
+	void Update(){
+	
+		Principal p =new Principal();
+		p.cargarModelo();
+		Text text = GetComponent<Text>();
+
+		if (Principal.user !=text.text)  text.text = "" + Principal.user;
+
+	} 
   
 }

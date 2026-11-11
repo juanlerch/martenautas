@@ -9,7 +9,7 @@ public class Juego {
 
    // public  List<int> scenes = new List<int>();
 
-    public Taller01NumeroPrimo taller01NumeroPrimoNivel1;
+	public Taller01NumeroPrimo[] taller01NumeroPrimoNivel; 
     // public Taller01NumeroPrimo taller01NumeroPrimoNivel2;
     // public Taller01NumeroPrimo taller01NumeroPrimoNivel3;
 
@@ -20,5 +20,10 @@ public class Juego {
 	//public Taller04Cuestionarios taller04CuestionariosNivel2;
 
 	public Laboratorio01Estados laboratorio01Estados;
+	public Laboratorio02Atomo Laboratorio02Atomo;
+
+	public SimuladorAterrizaje simuladorAterrizaje;
+
+	public SimuladorRover simuladorRover;
 
 }

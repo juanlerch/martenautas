@@ -26,6 +26,7 @@ public class LabTaller03 : MonoBehaviour {
 	public GameObject gNivelJuego;
 	public GameObject gNivelCompleta;
 
+	public GameObject HayOtraSolucion;
 
 	List<GameObject> opciones = new List<GameObject> ();
 	List<GameObject> planteos = new List<GameObject> ();
@@ -48,6 +49,7 @@ public class LabTaller03 : MonoBehaviour {
 
 	void Start () {
 		Principal p = gameObject.GetComponent<Principal>();
+		Principal.nivelActual = nivel;
 		p.cargarModelo();
 		Transform tpuntos = gMenu.transform.Find("MIDDLE Area/Contenedor MENU/Panel/Puntos");
 
@@ -55,16 +57,14 @@ public class LabTaller03 : MonoBehaviour {
 		gNivelJuego.GetComponent<Text>().text = "" + (nivel + 1);
 		gNivelCompleta.GetComponent<Text>().text = "" + (nivel + 1);
 
+		gameObject.GetComponent<LabsInfoXNivel> ().setNivel(nivel + 1);
+
 		GameObject puntos = tpuntos.gameObject;
 		Text text = puntos.GetComponent<Text>();
 		text.text = "" + Principal.juego.taller03Ecuaciones[nivel].puntajeMaximo ;
 
 		ecuaciones = Principal.juego.taller03Ecuaciones[nivel];
-		/*
-		titTerminos = GameObject.Find ("Panel-opciones/TitTerminos");
-		panelResolucion = GameObject.Find ("Panel-Resolucion"); 
-		btNuevaEcuacion = GameObject.Find ("Button-nueva-ecuacion");
-		*/
+
 		altoPlanteo = planteoIzquierda.GetComponent<RectTransform> ().rect.height;
 
 
@@ -74,9 +74,9 @@ public class LabTaller03 : MonoBehaviour {
         
 
 		nroEcuacion = 0;
+
 		cantidadEcuaciones = ecuaciones.data.Length;
 
-//		gMenu.SetActive (true);
 		gJuego.SetActive (false);
 		gCompleto.SetActive (false);
 
@@ -96,10 +96,11 @@ public class LabTaller03 : MonoBehaviour {
 
 			if (i == 0) {
 				Principal.juego.taller03Ecuaciones[nivel].puntajeJuego = 0;
+				gPuntos.GetComponent<Text> ().text = "0 XP";
 				nroEcuacion = 0;
 			}
 
-			//gPuntos.GetComponent<Text> ().text = "" + Principal.juego.taller03Ecuaciones[nivel].puntajeJuego + " XP";
+			//Debug.Log(ecuaciones.data[0]);
 
 			nroPaso = 0;
 			posPlanteo = 1;
@@ -193,7 +194,7 @@ public class LabTaller03 : MonoBehaviour {
 		}
 
 		// Para indicar la posición en la pantalla
-		float anchoTermino = modeloTermino.GetComponent<RectTransform> ().rect.width *1.5f;
+		float anchoTermino = modeloTermino.GetComponent<RectTransform> ().rect.width /**1.5f*/;
 		Vector3 posicionTermino = GameObject.Find("Panel-opciones").transform.position - new Vector3((((float)(terminos.Length-1)/2)*(anchoTermino)),0f,0f);
 
 
@@ -303,7 +304,8 @@ public class LabTaller03 : MonoBehaviour {
 		
 		}
 
-		if (resultado == "OK") {
+	
+
 
 			foreach (GameObject ri in resolucionIzquierda) {
 				txtPlanteoIzquierda += ri.GetComponent<Text> ().text;
@@ -314,10 +316,11 @@ public class LabTaller03 : MonoBehaviour {
 					} else {
 						strResultado = "(" + ecuaciones.data [nroEcuacion].resultado + ")";
 					}
-					if (ri.GetComponent<Text> ().text == "x") {
-						txtResolucionIzquierda += ri.GetComponent<Text> ().text.Replace ("x", " " + strResultado);
+					//	if (ri.GetComponent<Text> ().text == "x") {
+					if (ri.GetComponent<Text> ().text == "x" || ri.GetComponent<Text> ().text.Contains ("+") || ri.GetComponent<Text> ().text.Contains ("-")) {
+						txtResolucionIzquierda += ri.GetComponent<Text> ().text.Replace ("x", " " + strResultado + "");
 					} else {
-						txtResolucionIzquierda += ri.GetComponent<Text> ().text.Replace ("x", " * " + strResultado);
+						txtResolucionIzquierda += ri.GetComponent<Text> ().text.Replace ("x", " * " + strResultado + "");
 					}
 				} else {
 					txtResolucionIzquierda += ri.GetComponent<Text> ().text;
@@ -337,7 +340,8 @@ public class LabTaller03 : MonoBehaviour {
 					}
 
 
-					if (rd.GetComponent<Text> ().text == "x") {
+					//if (rd.GetComponent<Text> ().text == "x") {
+					if (rd.GetComponent<Text> ().text == "x" || rd.GetComponent<Text> ().text.Contains ("+") || rd.GetComponent<Text> ().text.Contains ("-")) {
 						txtResolucionDerecha += rd.GetComponent<Text> ().text.Replace ("x", " " + strResultado);
 					} else {
 						txtResolucionDerecha += rd.GetComponent<Text> ().text.Replace ("x", " * " + strResultado);
@@ -347,19 +351,31 @@ public class LabTaller03 : MonoBehaviour {
 				}
 			}
 
+
+
+			txtResolucionIzquierda = txtResolucionIzquierda.Replace (".", "*");
+			txtResolucionDerecha = txtResolucionDerecha.Replace (".", "*");
+
 			txtResolucionIzquierda = txtResolucionIzquierda.Replace (":", "/");
 			txtResolucionDerecha = txtResolucionDerecha.Replace (":", "/");
+
+			//Debug.Log (txtPlanteoIzquierda + " = " + txtPlanteoDerecha);
+			//Debug.Log (txtResolucionIzquierda + " = " + txtResolucionDerecha);
+
+		if (resultado == "OK") {
 
 			//-------------------------------------------------------------------
 			//Parser
 			//-------------------------------------------------------------------
-			var parser = new ExpressionParser();
+			var parser = new ExpressionParser ();
 
-			Expression expIzquierda = parser.EvaluateExpression(txtResolucionIzquierda);
-			Expression expDerecha   = parser.EvaluateExpression(txtResolucionDerecha);
+			Expression expIzquierda = parser.EvaluateExpression (txtResolucionIzquierda);
+			Expression expDerecha = parser.EvaluateExpression (txtResolucionDerecha);
+
+			//Debug.Log (expIzquierda.Value + " = " + expDerecha.Value);
 
 			if (expIzquierda.Value == expDerecha.Value) {
-				panelResolucion.GetComponent<RectTransform> ().position = panelResolucion.GetComponent<RectTransform> ().position + new Vector3( 0, -1*altoResolucion,0);
+				panelResolucion.GetComponent<RectTransform> ().position = panelResolucion.GetComponent<RectTransform> ().position + new Vector3 (0, -1 * altoResolucion, 0);
 				nroPaso++;
 
 				if (nroPaso < cantidadPasos) {
@@ -373,12 +389,28 @@ public class LabTaller03 : MonoBehaviour {
 			
 			}
 
+		} else {
+			//-------------------------------------------------------------------
+			//Parser
+			//-------------------------------------------------------------------
+			var parser2 = new ExpressionParser ();
+			//Debug.Log (txtResolucionIzquierda + " = " + txtResolucionDerecha);
+			Expression expIzquierda = parser2.EvaluateExpression (txtResolucionIzquierda);
+			Expression expDerecha = parser2.EvaluateExpression (txtResolucionDerecha);
+
+			//Debug.Log (expIzquierda.Value + " = " + expDerecha.Value);
+
+			if (expIzquierda.Value == expDerecha.Value) {
+				HayOtraSolucion.SetActive (true);
+				//Debug.Log ("hay otra solución");
+			}
 		}
 	}
 
 	public void nuevaEcuacion(){
 		nroEcuacion++;
 		cargarEcuacion (nroEcuacion);
+
 	}
 
 	// Update is called once per frame

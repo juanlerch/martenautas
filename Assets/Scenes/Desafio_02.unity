@@ -952,7 +952,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 523523874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8deb9eb2db7049479b6792468ea399d, type: 3}
   m_Name: 
@@ -2813,6 +2813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1564631269}
   - component: {fileID: 1564631268}
+  - component: {fileID: 1564631270}
   m_Layer: 0
   m_Name: Script
   m_TagString: Untagged
@@ -2831,7 +2832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fed608a4667574da05c683ea32abcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui_puntaje: {fileID: 0}
 --- !u!4 &1564631269
 Transform:
   m_ObjectHideFlags: 0
@@ -2845,6 +2845,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1564631270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564631267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10150c618fd89194f8035bb944512fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: 1
 --- !u!1 &1619029896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,12 +2952,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1564631268}
-        m_MethodName: cargarEscena
-        m_Mode: 5
+        m_MethodName: cargarTallerPrimos
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: Primos_01
           m_BoolArgument: 0
@@ -3025,6 +3037,7 @@ GameObject:
   - component: {fileID: 1657149884}
   - component: {fileID: 1657149886}
   - component: {fileID: 1657149885}
+  - component: {fileID: 1657149887}
   m_Layer: 5
   m_Name: Enunciado
   m_TagString: Untagged
@@ -3089,6 +3102,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657149883}
+--- !u!114 &1657149887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1657149883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8deb9eb2db7049479b6792468ea399d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1667243840
 GameObject:
   m_ObjectHideFlags: 0
